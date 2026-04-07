@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(echo $PATH)",
+      "Bash(source ~/.zshrc)",
+      "Bash(chmod +x \"/Users/rachel/Documents/我 iPad 上的文件/软件与项目/项目文件/parentgate 消息/start_parentgate.command\" \"/Users/rachel/Documents/我 iPad 上的文件/软件与项目/项目文件/parentgate 消息/stop_parentgate.command\")",
+      "Bash(export PATH=\"/usr/local/bin:$PATH\")",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Read(//usr/local/bin/**)"
+    ]
+  }
+}
