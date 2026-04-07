@@ -1,6 +1,6 @@
 import type { Message, NewMessage, SchoolEvent, NewEvent } from '../types';
 
-const GAS_URL = import.meta.env.VITE_GAS_URL;
+const GAS_URL = import.meta.env.VITE_GAS_URL || 'https://script.google.com/macros/s/AKfycbz-VlrBGn0wG_GpypReFt_lHPGzMfJHsN2vvCQ9DJWGn_a4FLmBFO0zYbyQcO_PQbIO/exec';
 
 async function gasGet<T>(action: string, params?: Record<string, string>): Promise<T> {
   const url = new URL(GAS_URL);
