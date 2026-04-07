@@ -4,7 +4,7 @@ import { useMessages } from '../hooks/useMessages';
 import MessageCard from '../components/MessageCard';
 
 export default function Messages() {
-  const { messages, isLoading } = useMessages();
+  const { messages, isLoading, error } = useMessages();
   const [search, setSearch] = useState('');
 
   const filtered = useMemo(() => {
@@ -49,6 +49,9 @@ export default function Messages() {
         />
       </div>
 
+      {error && (
+        <p className="text-xs text-red-400 bg-red-50 rounded-lg p-3 mb-3 break-all">{error}</p>
+      )}
       {isLoading && messages.length === 0 ? (
         <p className="text-center text-sm text-gray-400 py-8">加载中...</p>
       ) : filtered.length === 0 ? (
