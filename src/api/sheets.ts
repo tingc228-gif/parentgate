@@ -1,12 +1,10 @@
 import type { Message, NewMessage, SchoolEvent, NewEvent } from '../types';
 
 const GAS_URL = import.meta.env.VITE_GAS_URL || 'https://script.google.com/macros/s/AKfycbz-VlrBGn0wG_GpypReFt_lHPGzMfJHsN2vvCQ9DJWGn_a4FLmBFO0zYbyQcO_PQbIO/exec';
-const API_KEY = import.meta.env.VITE_API_KEY || 'pg_1307e0638a6cda776201252d5f655e0c96b1e47d';
 
 async function gasGet<T>(action: string, params?: Record<string, string>): Promise<T> {
   const url = new URL(GAS_URL);
   url.searchParams.set('action', action);
-  url.searchParams.set('key', API_KEY);
   if (params) {
     for (const [key, value] of Object.entries(params)) {
       url.searchParams.set(key, value);
@@ -21,7 +19,7 @@ async function gasPost<T>(action: string, data: Record<string, unknown>): Promis
   const res = await fetch(GAS_URL, {
     method: 'POST',
     redirect: 'follow',
-    body: JSON.stringify({ action, key: API_KEY, ...data }),
+    body: JSON.stringify({ action, ...data }),
   });
   if (!res.ok) throw new Error(`API error: ${res.status}`);
   return res.json();

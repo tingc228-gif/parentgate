@@ -13,7 +13,6 @@
 
 const SPREADSHEET_ID = '1_nTDxoDF31iT6q3l-TtpxJLHHNCrDGoPmCTblUoZ6gs';
 const FOLDER_ID = '1Gwp4l1eEoEOng_Uq0UNRcyDy4K2Jogmh';
-const SECRET_KEY = 'pg_1307e0638a6cda776201252d5f655e0c96b1e47d';
 
 function getSheet(name) {
   return SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(name);
@@ -54,11 +53,6 @@ function doGet(e) {
         `<h2 style="color:red">❌ 保存失败</h2><p>${err.message}</p>`
       ).setTitle('保存失败');
     }
-  }
-
-  if (e.parameter.key !== SECRET_KEY) {
-    return ContentService.createTextOutput(JSON.stringify({ error: 'Unauthorized' }))
-      .setMimeType(ContentService.MimeType.JSON);
   }
 
   let result;
@@ -175,10 +169,6 @@ function handleQuickSave(params) {
 
 function doPost(e) {
   const body = JSON.parse(e.postData.contents);
-  if (body.key !== SECRET_KEY) {
-    return ContentService.createTextOutput(JSON.stringify({ error: 'Unauthorized' }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
   const action = body.action;
   let result;
 
